@@ -9,12 +9,13 @@ import android.hardware.camera2.CameraAccessException
 import android.content.Context.CAMERA_SERVICE
 import android.hardware.camera2.CameraManager
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Build
 import android.view.View
 import android.widget.ToggleButton
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), WhiteFragment.OnFragmentInteractionListener{
 
     private var camera: CameraManager? = null
     private var isChecked: Boolean = true
@@ -67,4 +68,23 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    override fun onFragmentInteraction(uri: Uri) {
+        Log.d("test","hide")
+    }
+//    fun showWhiteView() {
+//        val fragmentManager = getSupportFragmentManager();
+//        val fragmentTransaction = fragmentManager.beginTransaction();
+//        val fragment = WhiteFragment()
+//        fragmentTransaction.add(R.id.fragment, fragment);
+//        fragmentTransaction.commit();
+//    }
+//
+//    fun hideWhiteView() {
+//        val fragmentManager = getSupportFragmentManager();
+//        val fragmentTransaction = fragmentManager.beginTransaction();
+//        val fragment = WhiteFragment()
+//        fragmentTransaction.add(R.id.fragment, fragment);
+//        fragmentTransaction.commit();
+//    }
 }
