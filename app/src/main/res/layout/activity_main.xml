@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_icon"
     tools:context="com.flashlight.sushantkumar.flashlight.MainActivity">
-
     <ToggleButton
         android:id="@+id/button"
         android:layout_width="0dp"
@@ -15,6 +15,9 @@
         android:layout_marginStart="148dp"
         android:layout_marginTop="221dp"
         android:text="Button"
+        android:textOn=""
+        android:textOff=""
+        android:background="@drawable/round_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintEnd_toEndOf="parent"

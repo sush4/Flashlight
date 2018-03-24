@@ -20,10 +20,23 @@ platform :android do
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
     gradle(task: "clean assembleRelease")
-    crashlytics
+
+    # crashlytics
   
     # sh "your_script.sh"
     # You can also use other beta testing services here
+	 sign_apk(
+	       alias: "key0",
+	       keystore_path: "/Users/sushantkumar/Documents/Code/CloudKey/Flash1Key",
+#       tsa: "http://timestamp.comodoca.com/rfc316",
+#       signed_apk_path: options[:signed_apk_path],
+     )
+  end
+  lane :release do
+	gradle(
+	  task: 'assemble',
+	  build_type: 'Release'
+	)
   end
 
 end

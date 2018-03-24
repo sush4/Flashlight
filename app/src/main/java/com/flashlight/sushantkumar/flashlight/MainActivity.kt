@@ -1,5 +1,6 @@
 package com.flashlight.sushantkumar.flashlight
 
+import android.app.Fragment
 import android.content.Context
 import android.content.pm.PackageManager
 import android.support.v7.app.AppCompatActivity
@@ -11,6 +12,7 @@ import android.hardware.camera2.CameraManager
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ToggleButton
 
