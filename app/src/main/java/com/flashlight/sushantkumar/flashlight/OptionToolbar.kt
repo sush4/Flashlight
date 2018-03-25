@@ -4,31 +4,26 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.MotionEvent
-import android.widget.Toast
 
 
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [WhiteFragment.OnFragmentInteractionListener] interface
+ * [OptionToolbar.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [WhiteFragment.newInstance] factory method to
+ * Use the [OptionToolbar.newInstance] factory method to
  * create an instance of this fragment.
  */
-class WhiteFragment : Fragment() {
+class OptionToolbar : Fragment() {
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
     private var mParam2: String? = null
 
     private var mListener: OnFragmentInteractionListener? = null
-
-//    constructor() : super()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,20 +35,10 @@ class WhiteFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
-        val view = inflater!!.inflate(R.layout.fragment_white, container, true)
-        touchListener(view)
-        return inflater!!.inflate(R.layout.fragment_white, container, false)
+        // Inflate the layout for this fragment
+        return inflater!!.inflate(R.layout.fragment_option_toolbar, container, false)
     }
 
-    private fun touchListener(view: View) {
-        view.setOnTouchListener { v, event ->
-            if (event.actionMasked == MotionEvent.ACTION_DOWN) {
-                Toast.makeText(activity, "you just touch the screen :-)", Toast.LENGTH_SHORT).show()
-            }
-            true
-        }
-    }
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
         if (mListener != null) {
@@ -101,11 +86,11 @@ class WhiteFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment WhiteFragment.
+         * @return A new instance of fragment OptionToolbar.
          */
         // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): WhiteFragment {
-            val fragment = WhiteFragment()
+        fun newInstance(param1: String, param2: String): OptionToolbar {
+            val fragment = OptionToolbar()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)
             args.putString(ARG_PARAM2, param2)

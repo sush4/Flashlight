@@ -1,5 +1,6 @@
 package com.flashlight.sushantkumar.flashlight
 
+import android.app.ActionBar
 import android.app.Fragment
 import android.content.Context
 import android.content.pm.PackageManager
@@ -15,9 +16,11 @@ import android.os.Build
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ToggleButton
+import android.widget.FrameLayout
+import android.support.v4.content.ContextCompat.startActivity
+import android.content.Intent
 
-
-class MainActivity : AppCompatActivity(), WhiteFragment.OnFragmentInteractionListener{
+class MainActivity : AppCompatActivity() , OptionToolbar.OnFragmentInteractionListener {
 
     private var camera: CameraManager? = null
     private var isChecked: Boolean = true
@@ -28,7 +31,13 @@ class MainActivity : AppCompatActivity(), WhiteFragment.OnFragmentInteractionLis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setLightOn()
+
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        val fragment = OptionToolbar()
+        fragmentTransaction.add(R.id.toolbar_container, fragment)
+        fragmentTransaction.commit()
+
         val button: ToggleButton = findViewById(R.id.button)
         button.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View) {
@@ -40,6 +49,8 @@ class MainActivity : AppCompatActivity(), WhiteFragment.OnFragmentInteractionLis
                 }
             }
         })
+
+        setLightOn()
 
     }
 
@@ -71,22 +82,13 @@ class MainActivity : AppCompatActivity(), WhiteFragment.OnFragmentInteractionLis
         }
     }
 
-    override fun onFragmentInteraction(uri: Uri) {
-        Log.d("test","hide")
+    fun showWhiteView() {
+        val myIntent = Intent(this@MainActivity, FullscreenActivity::class.java)
+        this@MainActivity.startActivity(myIntent)
     }
-//    fun showWhiteView() {
-//        val fragmentManager = getSupportFragmentManager();
-//        val fragmentTransaction = fragmentManager.beginTransaction();
-//        val fragment = WhiteFragment()
-//        fragmentTransaction.add(R.id.fragment, fragment);
-//        fragmentTransaction.commit();
-//    }
-//
-//    fun hideWhiteView() {
-//        val fragmentManager = getSupportFragmentManager();
-//        val fragmentTransaction = fragmentManager.beginTransaction();
-//        val fragment = WhiteFragment()
-//        fragmentTransaction.add(R.id.fragment, fragment);
-//        fragmentTransaction.commit();
-//    }
+
+    override fun  onFragmentInteraction(uri: Uri) {
+
+    }
+
 }
